@@ -29,17 +29,12 @@ type Props = {
 export default function ProfileDropdown({ user }: Props) {
     return (
         <DropdownMenu>
-            <DropdownMenuTrigger>
-                <Button
-                    variant="ghost"
-                    className="h-10 w-10 rounded-full p-0"
-                >
-                    <Avatar>
-                        <AvatarFallback>
-                            {user.name.charAt(0).toUpperCase()}
-                        </AvatarFallback>
-                    </Avatar>
-                </Button>
+            <DropdownMenuTrigger className="flex h-10 w-10 items-center justify-center rounded-full border hover:bg-accent">
+                <Avatar>
+                    <AvatarFallback>
+                        {user.name.charAt(0).toUpperCase()}
+                    </AvatarFallback>
+                </Avatar>
             </DropdownMenuTrigger>
 
             <DropdownMenuContent

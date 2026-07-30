@@ -1,0 +1,45 @@
+import PropertyFilters from "../_components/PropertyFilters";
+import PropertyGrid from "../_components/PropertyGrid";
+
+type Props = {
+  searchParams: Promise<{
+    search?: string;
+    category?: string;
+    minPrice?: string;
+    maxPrice?: string;
+    available?: string;
+    page?: string;
+  }>;
+};
+
+export default async function PropertiesPage({
+  searchParams,
+}: Props) {
+  const params = await searchParams;
+
+  return (
+    <main className="container mx-auto py-10">
+
+      <div className="mb-10">
+        <h1 className="text-4xl font-bold">
+          Browse Properties
+        </h1>
+
+        <p className="mt-2 text-muted-foreground">
+          Find your next home.
+        </p>
+      </div>
+
+      <div className="grid gap-8 lg:grid-cols-[300px_1fr]">
+
+        <PropertyFilters />
+
+        <PropertyGrid
+          searchParams={params}
+        />
+
+      </div>
+
+    </main>
+  );
+}

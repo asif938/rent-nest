@@ -1,9 +1,18 @@
-import Image from "next/image";
+import CategorySection from "./(public)/_components/CategorySection";
+import FeaturedProperties from "./(public)/_components/FeaturedProperties";
+import HeroSection from "./(public)/_components/HeroSection";
 
-export default function Home() {
+
+export default function HomePage() {
   return (
-    <div className="text-3xl">
-      Hoome Page
-    </div>
+    <main>
+      <HeroSection />
+
+      <CategorySection />
+
+      <FeaturedProperties />
+
+
+    </main>
   );
 }
