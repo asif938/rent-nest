@@ -1,4 +1,4 @@
-import { getReviews } from "../_actions/getReview";
+// import { getReviews } from "../_actions/getReview";
 import TestimonialCard from "./TestimonialCard";
 
 // import { getReviews } from "@/lib/api/review";

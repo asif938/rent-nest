@@ -15,7 +15,7 @@ import {
     AvatarFallback,
 } from "@/components/ui/avatar";
 
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import { logoutAction } from "@/app/(auth)/_actions/logoutAction";
 
 type Props = {

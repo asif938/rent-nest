@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 export default function HeroSection() {
   return (
     <section className="bg-muted">
-      <div className="container mx-auto flex min-h-[600px] flex-col items-center justify-center px-4 text-center">
+      <div className="container mx-auto flex min-h-150 flex-col items-center justify-center px-4 text-center">
 
         <span className="mb-4 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
           Find Your Perfect Home
