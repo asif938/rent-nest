@@ -1,3 +1,4 @@
+import { getMe } from "@/lib/getMe";
 import { getSingleProperty } from "../../_actions/getSingleProperty";
 import LandlordCard from "../_components/LandlordCard";
 import PropertyAmenities from "../_components/PropertyAmenities";
@@ -18,6 +19,8 @@ export default async function PropertyDetailsPage({
   params,
 }: Props) {
   const { id } = await params;
+
+  const user = await getMe();
 
   const property = await getSingleProperty(id);
 
@@ -44,7 +47,7 @@ export default async function PropertyDetailsPage({
 
           <LandlordCard landlord={property.landlord} />
 
-          <RequestRentButton propertyId={property.id} />
+          <RequestRentButton propertyId={property.id} user={user} />
 
         </aside>
 
