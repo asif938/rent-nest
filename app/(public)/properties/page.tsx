@@ -1,3 +1,4 @@
+import { getCategories } from "../_actions/getCategories";
 import PropertyFilters from "../_components/PropertyFilters";
 import PropertyGrid from "../_components/PropertyGrid";
 
@@ -17,6 +18,8 @@ export default async function PropertiesPage({
 }: Props) {
   const params = await searchParams;
 
+  const categories = await getCategories();
+
   return (
     <main className="container mx-auto py-10">
 
@@ -32,7 +35,7 @@ export default async function PropertiesPage({
 
       <div className="grid gap-8 lg:grid-cols-[300px_1fr]">
 
-        <PropertyFilters />
+        <PropertyFilters categories={categories} />
 
         <PropertyGrid
           searchParams={params}
