@@ -7,7 +7,7 @@ import {
   Wallet,
 } from "lucide-react";
 
-import DashboardCard from "./DashboardCard";
+import DashboardCard from "@/app/dashboard/_components/DashboardCard";
 import { DashboardStats as DashboardData } from "@/types/tenantDashboard";
 
 type Props = {
