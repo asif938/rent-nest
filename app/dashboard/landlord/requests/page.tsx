@@ -1,8 +1,13 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 
 import { cn } from "@/lib/utils";
 import { getRequests } from "./_actions/getRequests";
 import RequestsTable from "./_components/RequestsTable";
+
+export const metadata: Metadata = {
+  title: "Rental Requests",
+};
 
 type Props = {
   searchParams: Promise<{

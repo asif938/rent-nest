@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { LogOut } from "lucide-react";
 
 import {
     DropdownMenu,
@@ -15,7 +15,6 @@ import {
     AvatarFallback,
 } from "@/components/ui/avatar";
 
-// import { Button } from "@/components/ui/button";
 import { logoutAction } from "@/app/(site)/(auth)/_actions/logoutAction";
 
 type Props = {
@@ -51,26 +50,13 @@ export default function ProfileDropdown({ user }: Props) {
 
                 <DropdownMenuSeparator />
 
-                <Link href="/profile">
-                    <DropdownMenuItem>
-                        Profile
-                    </DropdownMenuItem>
-                </Link>
-
-                <Link href="/change-password">
-                    <DropdownMenuItem>
-                        Change Password
-                    </DropdownMenuItem>
-                </Link>
-
-                <DropdownMenuSeparator />
-
                 <form action={logoutAction}>
                     <button
                         type="submit"
                         className="w-full"
                     >
-                        <DropdownMenuItem>
+                        <DropdownMenuItem variant="destructive">
+                            <LogOut size={14} />
                             Logout
                         </DropdownMenuItem>
                     </button>

@@ -1,9 +1,14 @@
 import { notFound, redirect } from "next/navigation";
+import type { Metadata } from "next";
 
 import { getMe } from "@/lib/getMe";
 import { getSingleProperty } from "@/app/(site)/(public)/_actions/getSingleProperty";
 import { getCategories } from "@/app/(site)/(public)/_actions/getCategories";
 import PropertyForm from "../../_components/PropertyForm";
+
+export const metadata: Metadata = {
+  title: "Edit Property",
+};
 
 type Props = {
   params: Promise<{

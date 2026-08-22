@@ -3,7 +3,7 @@ import {
     FileText,
     Home,
     LayoutDashboard,
-    Settings,
+    Tag,
     Users,
 } from "lucide-react";
 
@@ -63,7 +63,12 @@ export const dashboardMenus = {
         {
             label: "Rentals",
             href: "/dashboard/admin/rentals",
-            icon: Settings,
+            icon: FileText,
+        },
+        {
+            label: "Categories",
+            href: "/dashboard/admin/categories",
+            icon: Tag,
         },
     ],
 };

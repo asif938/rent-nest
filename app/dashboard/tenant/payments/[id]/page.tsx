@@ -1,10 +1,15 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 
 import { Button } from "@/components/ui/button";
 import { getSinglePayment } from "../_actions/getSinglePayment";
 import PaymentInfoCard from "../_components/PaymentInfoCard";
 import PaymentPropertyCard from "../_components/PaymentPropertyCard";
 import PaymentRentalCard from "../_components/PaymentRentalCard";
+
+export const metadata: Metadata = {
+  title: "Payment Details",
+};
 
 
 

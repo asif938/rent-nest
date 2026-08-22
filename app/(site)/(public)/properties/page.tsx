@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
+
 import { getCategories } from "../_actions/getCategories";
 import PropertyFilters from "../_components/PropertyFilters";
 import PropertyGrid from "../_components/PropertyGrid";
+
+export const metadata: Metadata = {
+  title: "Browse Properties",
+};
 
 type Props = {
   searchParams: Promise<{

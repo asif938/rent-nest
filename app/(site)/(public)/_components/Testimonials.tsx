@@ -1,11 +1,6 @@
-// import { getReviews } from "../_actions/getReview";
 import TestimonialCard from "./TestimonialCard";
 
-// import { getReviews } from "@/lib/api/review";
-
 export default async function Testimonials() {
-    //   const reviews = await getReviews();
-
     const reviews = [
         {
             id: "1",

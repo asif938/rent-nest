@@ -1,9 +1,14 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { Plus, PackageOpen } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { getProperties } from "./_actions/getProperties";
 import PropertyManagementCard from "./_components/PropertyManagementCard";
+
+export const metadata: Metadata = {
+  title: "My Properties",
+};
 
 export default async function LandlordPropertiesPage() {
   const { data: properties } = await getProperties();

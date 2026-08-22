@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
+
 import { getDashboard } from "./_actions/getDashboard";
 import DashboardStats from "./_components/DashboardStats";
 import RecentRequests from "./_components/RecentRequests";
+
+export const metadata: Metadata = {
+  title: "Landlord Dashboard",
+};
 
 export default async function LandlordDashboardPage() {
   const dashboard = await getDashboard();

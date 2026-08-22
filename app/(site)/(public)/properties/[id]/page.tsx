@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 import { getMe } from "@/lib/getMe";
 import { getSingleProperty } from "../../_actions/getSingleProperty";
 import LandlordCard from "../_components/LandlordCard";
@@ -14,6 +16,23 @@ type Props = {
     id: string;
   }>;
 };
+
+export async function generateMetadata({
+  params,
+}: Props): Promise<Metadata> {
+  const { id } = await params;
+
+  try {
+    const property = await getSingleProperty(id);
+
+    return {
+      title: `${property.title} — ${property.location}`,
+      description: property.description?.slice(0, 160),
+    };
+  } catch {
+    return { title: "Property" };
+  }
+}
 
 export default async function PropertyDetailsPage({
   params,

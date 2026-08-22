@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
+
 import AuthShell from "../_components/AuthShell";
 import RegisterForm from "../_components/RegisterForm";
+
+export const metadata: Metadata = {
+  title: "Register",
+};
 
 export default function RegisterPage() {
   return (

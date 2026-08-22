@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
+
 import { getPayments } from "./_actions/getPayments";
 import PaymentsTable from "./_components/PaymentsTable";
+
+export const metadata: Metadata = {
+  title: "Payments",
+};
 
 export default async function PaymentsPage() {
   const payments = await getPayments();

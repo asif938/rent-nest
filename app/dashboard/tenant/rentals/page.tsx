@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
+
 import { getMyRentals } from "./_actions/getMyRentals";
 import RentalsTable from "./_components/RentalsTable";
+
+export const metadata: Metadata = {
+  title: "My Rentals",
+};
 
 export default async function MyRentalsPage() {
   const rentals = await getMyRentals();

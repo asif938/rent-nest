@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
+
 import { getCategories } from "@/app/(site)/(public)/_actions/getCategories";
 import PropertyForm from "../_components/PropertyForm";
+
+export const metadata: Metadata = {
+  title: "Add Property",
+};
 
 export default async function NewPropertyPage() {
   const categories = await getCategories();
