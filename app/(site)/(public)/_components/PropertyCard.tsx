@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, House, MapPin } from "lucide-react";
+import { ArrowUpRight, MapPin } from "lucide-react";
 
 import { Card, CardContent } from "@/components/ui/card";
+import PropertyImage from "@/components/shared/PropertyImage";
 
 type Property = {
     id: string;
@@ -26,22 +26,12 @@ export default function PropertyCard({ property }: Props) {
         >
             <Card className="overflow-hidden py-0 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:ring-primary/30">
                 <div className="relative h-56 overflow-hidden bg-muted">
-                    {image ? (
-                        <Image
-                            src={image}
-                            alt={property.title}
-                            fill
-                            sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
-                            className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                    ) : (
-                        <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-secondary to-muted">
-                            <House
-                                size={40}
-                                className="text-muted-foreground/40"
-                            />
-                        </div>
-                    )}
+                    <PropertyImage
+                        src={image}
+                        alt={property.title}
+                        sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
+                        className="transition-transform duration-500 group-hover:scale-105"
+                    />
 
                     <div className="absolute top-3 right-3 rounded-full bg-background/90 px-3 py-1.5 text-sm font-semibold text-foreground shadow-sm backdrop-blur">
                         ${property.price}

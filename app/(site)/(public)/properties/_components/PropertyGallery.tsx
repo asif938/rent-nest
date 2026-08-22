@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { ImageOff } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import PropertyImage from "@/components/shared/PropertyImage";
 import { Property } from "@/types/property";
 
 type Props = {
@@ -32,13 +32,13 @@ export default function PropertyGallery({
   return (
     <div className="space-y-3">
       <div className="relative h-80 w-full overflow-hidden rounded-2xl bg-muted md:h-[28rem]">
-        <Image
+        <PropertyImage
+          key={images[active]}
           src={images[active]}
           alt={property.title}
-          fill
           priority
           sizes="(min-width: 1024px) 66vw, 100vw"
-          className="object-cover"
+          iconSize={48}
         />
       </div>
 
@@ -56,12 +56,11 @@ export default function PropertyGallery({
                   : "opacity-70 hover:opacity-100"
               )}
             >
-              <Image
+              <PropertyImage
                 src={image}
                 alt={`${property.title} photo ${index + 1}`}
-                fill
                 sizes="112px"
-                className="object-cover"
+                iconSize={20}
               />
             </button>
           ))}

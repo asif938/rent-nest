@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { House, Pencil, Star, Trash2 } from "lucide-react";
+import { Pencil, Star, Trash2 } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import PropertyImage from "@/components/shared/PropertyImage";
 import AvailabilityToggle from "./AvailabilityToggle";
 import DeletePropertyDialog from "./DeletePropertyDialog";
 import type { LandlordProperty } from "@/types/landlord";
@@ -26,22 +26,12 @@ export default function PropertyManagementCard({
   return (
     <Card className="overflow-hidden py-0">
       <div className="relative h-44 bg-muted">
-        {image ? (
-          <Image
-            src={image}
-            alt={property.title}
-            fill
-            sizes="(min-width: 1280px) 25vw, (min-width: 768px) 33vw, 100vw"
-            className="object-cover"
-          />
-        ) : (
-          <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-secondary to-muted">
-            <House
-              size={32}
-              className="text-muted-foreground/40"
-            />
-          </div>
-        )}
+        <PropertyImage
+          src={image}
+          alt={property.title}
+          sizes="(min-width: 1280px) 25vw, (min-width: 768px) 33vw, 100vw"
+          iconSize={32}
+        />
 
         <Badge
           variant={property.isAvailable ? "default" : "secondary"}
