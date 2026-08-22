@@ -45,12 +45,12 @@ export default function ReviewsSection({
 
                   <div className="flex items-center gap-3">
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 font-display font-semibold text-primary">
-                      T
+                      {review.tenant.name.charAt(0).toUpperCase()}
                     </div>
 
                     <div>
                       <h4 className="font-semibold">
-                        Tenant
+                        {review.tenant.name}
                       </h4>
 
                       <p className="text-sm text-muted-foreground">

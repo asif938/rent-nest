@@ -3,6 +3,7 @@ import LandlordCard from "../_components/LandlordCard";
 import PaymentCard from "../_components/PaymentCard";
 import PropertyCard from "../_components/PropertyCard";
 import RentalInfoCard from "../_components/RentalInfoCard";
+import ReviewSection from "../_components/ReviewSection";
 
 type Props = {
   params: Promise<{
@@ -53,6 +54,10 @@ export default async function RentalDetailsPage({
           rentalRequestId={rental.id}
           rentalStatus={rental.status}
         />
+
+        {rental.status === "COMPLETED" && (
+          <ReviewSection propertyId={rental.property.id} />
+        )}
 
       </div>
 

@@ -18,6 +18,11 @@ export interface Review {
   rating: number;
   comment: string;
   createdAt: string;
+
+  tenant: {
+    id: string;
+    name: string;
+  };
 }
 
 export interface Property {

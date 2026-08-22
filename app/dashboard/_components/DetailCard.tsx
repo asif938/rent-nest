@@ -6,17 +6,20 @@ type CardProps = {
   title: string;
   children: ReactNode;
   className?: string;
+  id?: string;
 };
 
 export function DetailCard({
   title,
   children,
   className,
+  id,
 }: CardProps) {
   return (
     <div
+      id={id}
       className={cn(
-        "rounded-2xl border border-border/70 bg-card p-6 shadow-sm",
+        "rounded-2xl border border-border/70 bg-card p-6 shadow-sm scroll-mt-24",
         className
       )}
     >

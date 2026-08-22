@@ -129,6 +129,19 @@ export default function RentalsTable({
                       />
                     )}
 
+                    {rental.status === "COMPLETED" && (
+                      <Link
+                        href={`/dashboard/tenant/rentals/${rental.id}#review`}
+                      >
+                        <Button
+                          size="sm"
+                          variant="secondary"
+                        >
+                          Review
+                        </Button>
+                      </Link>
+                    )}
+
                     <Link
                       href={`/dashboard/tenant/rentals/${rental.id}`}
                     >
