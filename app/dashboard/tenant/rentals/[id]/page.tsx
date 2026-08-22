@@ -50,6 +50,8 @@ export default async function RentalDetailsPage({
 
         <PaymentCard
           payment={rental.payment}
+          rentalRequestId={rental.id}
+          rentalStatus={rental.status}
         />
 
       </div>

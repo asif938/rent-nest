@@ -3,6 +3,7 @@ import { FileQuestion } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import RentalStatusBadge from "@/components/shared/rentalStatusBadge";
+import PayNowButton from "../../payments/_components/PayNowButton";
 import { Rental } from "@/types/rental";
 
 type Props = {
@@ -118,19 +119,28 @@ export default function RentalsTable({
                   ).toLocaleDateString()}
                 </td>
 
-                <td className="px-6 py-5 text-right">
+                <td className="px-6 py-5">
+                  <div className="flex items-center justify-end gap-2">
 
-                  <Link
-                    href={`/dashboard/tenant/rentals/${rental.id}`}
-                  >
-                    <Button
-                      size="sm"
-                      variant="outline"
+                    {rental.status === "APPROVED" && !rental.payment && (
+                      <PayNowButton
+                        rentalRequestId={rental.id}
+                        size="sm"
+                      />
+                    )}
+
+                    <Link
+                      href={`/dashboard/tenant/rentals/${rental.id}`}
                     >
-                      View
-                    </Button>
-                  </Link>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                      >
+                        View
+                      </Button>
+                    </Link>
 
+                  </div>
                 </td>
 
               </tr>
