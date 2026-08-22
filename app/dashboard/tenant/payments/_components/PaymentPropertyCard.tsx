@@ -1,3 +1,4 @@
+import { DetailCard, DetailRow } from "@/app/dashboard/_components/DetailCard";
 import { Payment } from "@/types/payment";
 
 type Props = {
@@ -8,44 +9,24 @@ export default function PaymentPropertyCard({
   property,
 }: Props) {
   return (
-    <div className="rounded-xl border p-6">
-      <h2 className="mb-6 text-xl font-semibold">
-        Property
-      </h2>
+    <DetailCard title="Property">
 
-      <div className="space-y-4">
+      <DetailRow label="Property">
+        <p className="font-medium">
+          {property.title}
+        </p>
+      </DetailRow>
 
-        <div>
-          <p className="text-sm text-muted-foreground">
-            Property
-          </p>
+      <DetailRow label="Location">
+        <p>{property.location}</p>
+      </DetailRow>
 
-          <p className="mt-1 font-medium">
-            {property.title}
-          </p>
-        </div>
+      <DetailRow label="Monthly Rent">
+        <p className="font-semibold text-primary">
+          ৳{property.price.toLocaleString()}
+        </p>
+      </DetailRow>
 
-        <div>
-          <p className="text-sm text-muted-foreground">
-            Location
-          </p>
-
-          <p className="mt-1">
-            {property.location}
-          </p>
-        </div>
-
-        <div>
-          <p className="text-sm text-muted-foreground">
-            Monthly Rent
-          </p>
-
-          <p className="mt-1 font-semibold">
-            ৳{property.price.toLocaleString()}
-          </p>
-        </div>
-
-      </div>
-    </div>
+    </DetailCard>
   );
 }

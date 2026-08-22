@@ -10,16 +10,22 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="border-t bg-muted/40">
-      <div className="container mx-auto px-4 py-14">
+    <footer className="border-t border-border/70 bg-muted/40">
+      <div className="container py-14">
 
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
 
           {/* Brand */}
           <div>
-            <h2 className="text-2xl font-bold text-primary">
-              RentNest
-            </h2>
+            <div className="flex items-center gap-2.5">
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+                <House size={16} />
+              </span>
+
+              <h2 className="font-display text-xl font-semibold">
+                RentNest
+              </h2>
+            </div>
 
             <p className="mt-4 text-sm leading-6 text-muted-foreground">
               Find verified rental properties, connect with trusted
@@ -109,28 +115,28 @@ export default function Footer() {
 
               <Link
                 href="#"
-                className="rounded-full border p-3 transition hover:bg-primary hover:text-white"
+                className="rounded-full border border-border p-3 transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
               >
                 <Globe size={18} />
               </Link>
 
               <Link
                 href="#"
-                className="rounded-full border p-3 transition hover:bg-primary hover:text-white"
+                className="rounded-full border border-border p-3 transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
               >
                 <House size={18} />
               </Link>
 
               <Link
                 href="#"
-                className="rounded-full border p-3 transition hover:bg-primary hover:text-white"
+                className="rounded-full border border-border p-3 transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
               >
                 <ExternalLink size={18} />
               </Link>
 
               {/* <Link
                 href="#"
-                className="rounded-full border p-3 transition hover:bg-primary hover:text-white"
+                className="rounded-full border border-border p-3 transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
               >
                 <Github size={18} />
               </Link> */}

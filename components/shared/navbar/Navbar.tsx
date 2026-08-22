@@ -77,8 +77,8 @@ export default async function Navbar() {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b bg-background/90 backdrop-blur">
-      <div className="container mx-auto flex h-16 items-center justify-between">
+    <header className="sticky top-0 z-50 border-b border-border/70 bg-background/80 backdrop-blur-lg supports-backdrop-filter:bg-background/60">
+      <div className="container flex h-16 items-center justify-between">
 
         <Logo />
 
@@ -87,14 +87,14 @@ export default async function Navbar() {
         {!user ? (
           <div className="hidden items-center gap-3 md:flex">
             <Link href="/login">
-              <Button variant="outline">
+              <Button variant="ghost">
                 Login
               </Button>
             </Link>
 
             <Link href="/register">
               <Button>
-                Register
+                Get Started
               </Button>
             </Link>
           </div>

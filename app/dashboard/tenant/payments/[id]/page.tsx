@@ -25,7 +25,7 @@ export default async function PaymentDetailsPage({
     <div className="space-y-8">
 
       <div>
-        <h1 className="text-3xl font-bold">
+        <h1 className="font-display text-3xl font-medium tracking-tight">
           Payment Details
         </h1>
 
@@ -56,7 +56,10 @@ export default async function PaymentDetailsPage({
 
       <div>
         <Link href="/dashboard/tenant/payments">
-          <Button variant="outline">
+          <Button
+            variant="outline"
+            className="rounded-full"
+          >
             Back to Payments
           </Button>
         </Link>

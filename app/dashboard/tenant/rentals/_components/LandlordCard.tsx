@@ -1,39 +1,24 @@
-import { Landlord } from "@/types/property";
+import { DetailCard, DetailRow } from "@/app/dashboard/_components/DetailCard";
+import { Rental } from "@/types/rental";
 
 type Props = {
-  landlord: Landlord;
+  landlord: NonNullable<Rental["property"]["landlord"]>;
 };
 
 export default function LandlordCard({
   landlord,
 }: Props) {
   return (
-    <div className="rounded-xl border p-6">
+    <DetailCard title="Landlord">
 
-      <h2 className="mb-5 text-xl font-semibold">
-        Landlord
-      </h2>
+      <DetailRow label="Name">
+        <p className="font-medium">{landlord.name}</p>
+      </DetailRow>
 
-      <div className="space-y-3">
+      <DetailRow label="Email">
+        <p>{landlord.email}</p>
+      </DetailRow>
 
-        <div>
-          <p className="text-sm text-muted-foreground">
-            Name
-          </p>
-
-          <p>{landlord.id}</p>
-        </div>
-
-        <div>
-          <p className="text-sm text-muted-foreground">
-            Email
-          </p>
-
-          <p>{landlord.email}</p>
-        </div>
-
-      </div>
-
-    </div>
+    </DetailCard>
   );
 }

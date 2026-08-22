@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/avatar";
 
 // import { Button } from "@/components/ui/button";
-import { logoutAction } from "@/app/(auth)/_actions/logoutAction";
+import { logoutAction } from "@/app/(site)/(auth)/_actions/logoutAction";
 
 type Props = {
     user: {

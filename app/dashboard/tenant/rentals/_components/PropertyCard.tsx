@@ -1,85 +1,53 @@
 import { Badge } from "@/components/ui/badge";
-import { Property } from "@/types/property";
+import { DetailCard, DetailRow } from "@/app/dashboard/_components/DetailCard";
+import { Rental } from "@/types/rental";
 
 type Props = {
-  property: Property;
+  property: Rental["property"];
 };
 
 export default function PropertyCard({
   property,
 }: Props) {
   return (
-    <div className="rounded-xl border p-6">
+    <DetailCard title="Property Information">
 
-      <h2 className="mb-5 text-xl font-semibold">
-        Property Information
-      </h2>
+      <DetailRow label="Title">
+        <p className="font-medium">
+          {property.title}
+        </p>
+      </DetailRow>
 
-      <div className="space-y-3">
+      <DetailRow label="Location">
+        <p>{property.location}</p>
+      </DetailRow>
 
-        <div>
-          <p className="text-sm text-muted-foreground">
-            Title
-          </p>
+      <DetailRow label="Category">
+        <Badge className="rounded-full">
+          {property.category.name}
+        </Badge>
+      </DetailRow>
 
-          <p className="font-medium">
-            {property.title}
-          </p>
+      <DetailRow label="Monthly Rent">
+        <p className="font-semibold text-primary">
+          ৳{property.price.toLocaleString()}
+        </p>
+      </DetailRow>
+
+      <DetailRow label="Amenities">
+        <div className="flex flex-wrap gap-2">
+          {property.amenities.map((item: string) => (
+            <Badge
+              key={item}
+              variant="secondary"
+              className="rounded-full"
+            >
+              {item}
+            </Badge>
+          ))}
         </div>
+      </DetailRow>
 
-        <div>
-          <p className="text-sm text-muted-foreground">
-            Location
-          </p>
-
-          <p>{property.location}</p>
-        </div>
-
-        <div>
-          <p className="text-sm text-muted-foreground">
-            Category
-          </p>
-
-          <Badge>
-            {property.category.name}
-          </Badge>
-        </div>
-
-        <div>
-          <p className="text-sm text-muted-foreground">
-            Monthly Rent
-          </p>
-
-          <p className="font-semibold">
-            ৳{property.price.toLocaleString()}
-          </p>
-        </div>
-
-        <div>
-
-          <p className="mb-2 text-sm text-muted-foreground">
-            Amenities
-          </p>
-
-          <div className="flex flex-wrap gap-2">
-
-            {property.amenities.map(
-              (item: string) => (
-                <Badge
-                  key={item}
-                  variant="secondary"
-                >
-                  {item}
-                </Badge>
-              )
-            )}
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
+    </DetailCard>
   );
 }

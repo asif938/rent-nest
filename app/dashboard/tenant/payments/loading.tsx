@@ -10,7 +10,7 @@ export default function PaymentsLoading() {
       </div>
 
       {/* Payment Table */}
-      <div className="overflow-hidden rounded-xl border">
+      <div className="overflow-hidden rounded-2xl border border-border/70">
 
         {/* Table Header */}
         <div className="grid grid-cols-5 gap-4 bg-muted/50 px-5 py-4">

@@ -9,7 +9,7 @@ export default async function MyRentalsPage() {
 
       <div>
 
-        <h1 className="text-3xl font-bold">
+        <h1 className="font-display text-3xl font-medium tracking-tight">
           My Rentals
         </h1>
 

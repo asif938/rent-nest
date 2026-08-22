@@ -1,6 +1,5 @@
-// import RentalStatusBadge from "../../_components/RentalStatusBadge";
-
 import RentalStatusBadge from "@/components/shared/rentalStatusBadge";
+import { DetailCard, DetailRow } from "@/app/dashboard/_components/DetailCard";
 import { Rental } from "@/types/rental";
 
 type Props = {
@@ -11,62 +10,30 @@ export default function RentalInfoCard({
   rental,
 }: Props) {
   return (
-    <div className="rounded-xl border p-6">
+    <DetailCard title="Rental Information">
 
-      <h2 className="mb-5 text-xl font-semibold">
-        Rental Information
-      </h2>
+      <DetailRow label="Status">
+        <RentalStatusBadge status={rental.status} />
+      </DetailRow>
 
-      <div className="space-y-4">
+      <DetailRow label="Start Date">
+        <p>
+          {new Date(rental.startDate).toLocaleDateString()}
+        </p>
+      </DetailRow>
 
-        <div>
-          <p className="text-sm text-muted-foreground">
-            Status
-          </p>
+      <DetailRow label="End Date">
+        <p>
+          {new Date(rental.endDate).toLocaleDateString()}
+        </p>
+      </DetailRow>
 
-          <RentalStatusBadge
-            status={rental.status}
-          />
-        </div>
+      <DetailRow label="Requested On">
+        <p>
+          {new Date(rental.createdAt).toLocaleDateString()}
+        </p>
+      </DetailRow>
 
-        <div>
-          <p className="text-sm text-muted-foreground">
-            Start Date
-          </p>
-
-          <p>
-            {new Date(
-              rental.startDate
-            ).toLocaleDateString()}
-          </p>
-        </div>
-
-        <div>
-          <p className="text-sm text-muted-foreground">
-            End Date
-          </p>
-
-          <p>
-            {new Date(
-              rental.endDate
-            ).toLocaleDateString()}
-          </p>
-        </div>
-
-        <div>
-          <p className="text-sm text-muted-foreground">
-            Requested On
-          </p>
-
-          <p>
-            {new Date(
-              rental.createdAt
-            ).toLocaleDateString()}
-          </p>
-        </div>
-
-      </div>
-
-    </div>
+    </DetailCard>
   );
 }

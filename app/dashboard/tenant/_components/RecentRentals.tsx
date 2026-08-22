@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import RentalStatusBadge from "@/components/shared/rentalStatusBadge";
 
 import { DashboardStats } from "@/types/tenantDashboard";
 
@@ -9,35 +9,16 @@ type Props = {
     rentals: DashboardStats["recentRentals"];
 };
 
-function getStatusVariant(status: string) {
-    switch (status) {
-        case "APPROVED":
-            return "default";
-
-        case "COMPLETED":
-            return "secondary";
-
-        case "PENDING":
-            return "outline";
-
-        case "REJECTED":
-            return "destructive";
-
-        default:
-            return "outline";
-    }
-}
-
 export default function RecentRentals({
     rentals,
 }: Props) {
     return (
-        <section className="mt-10 rounded-xl border bg-card shadow-sm">
+        <section className="rounded-2xl border border-border/70 bg-card shadow-sm">
 
-            <div className="flex items-center justify-between border-b p-6">
+            <div className="flex items-center justify-between border-b border-border/70 p-6">
 
                 <div>
-                    <h2 className="text-xl font-semibold">
+                    <h2 className="text-lg font-semibold">
                         Recent Rental Requests
                     </h2>
 
@@ -46,8 +27,11 @@ export default function RecentRentals({
                     </p>
                 </div>
 
-                <Link href="/tenant/rentals">
-                    <Button variant="outline">
+                <Link href="/dashboard/tenant/rentals">
+                    <Button
+                        variant="outline"
+                        className="rounded-full"
+                    >
                         View All
                     </Button>
                 </Link>
@@ -63,31 +47,31 @@ export default function RecentRentals({
 
                     <table className="w-full">
 
-                        <thead className="border-b bg-muted/40">
+                        <thead className="border-b border-border/70 bg-muted/40">
 
                             <tr>
 
-                                <th className="px-6 py-3 text-left text-sm font-medium">
+                                <th className="px-6 py-3 text-left text-sm font-medium text-muted-foreground">
                                     Property
                                 </th>
 
-                                <th className="px-6 py-3 text-left text-sm font-medium">
+                                <th className="px-6 py-3 text-left text-sm font-medium text-muted-foreground">
                                     Location
                                 </th>
 
-                                <th className="px-6 py-3 text-left text-sm font-medium">
+                                <th className="px-6 py-3 text-left text-sm font-medium text-muted-foreground">
                                     Price
                                 </th>
 
-                                <th className="px-6 py-3 text-left text-sm font-medium">
+                                <th className="px-6 py-3 text-left text-sm font-medium text-muted-foreground">
                                     Status
                                 </th>
 
-                                <th className="px-6 py-3 text-left text-sm font-medium">
+                                <th className="px-6 py-3 text-left text-sm font-medium text-muted-foreground">
                                     Requested
                                 </th>
 
-                                <th className="px-6 py-3 text-right text-sm font-medium">
+                                <th className="px-6 py-3 text-right text-sm font-medium text-muted-foreground">
                                     Action
                                 </th>
 
@@ -100,31 +84,33 @@ export default function RecentRentals({
                             {rentals.map((rental) => (
                                 <tr
                                     key={rental.id}
-                                    className="border-b last:border-none"
+                                    className="border-b border-border/70 last:border-none hover:bg-muted/30"
                                 >
                                     <td className="px-6 py-4 font-medium">
                                         {rental.property.title}
                                     </td>
 
-                                    <td className="px-6 py-4">
+                                    <td className="px-6 py-4 text-muted-foreground">
                                         {rental.property.location}
                                     </td>
 
                                     <td className="px-6 py-4">
-                                        Tk {rental.property.price.toLocaleString()}
+                                        ৳{rental.property.price.toLocaleString()}
                                     </td>
 
                                     <td className="px-6 py-4">
-                                        <Badge
-                                            variant={getStatusVariant(
-                                                rental.status
-                                            )}
-                                        >
-                                            {rental.status}
-                                        </Badge>
+                                        <RentalStatusBadge
+                                            status={
+                                                rental.status as
+                                                    | "PENDING"
+                                                    | "APPROVED"
+                                                    | "REJECTED"
+                                                    | "COMPLETED"
+                                            }
+                                        />
                                     </td>
 
-                                    <td className="px-6 py-4">
+                                    <td className="px-6 py-4 text-muted-foreground">
                                         {new Date(
                                             rental.createdAt
                                         ).toLocaleDateString()}
@@ -132,7 +118,7 @@ export default function RecentRentals({
 
                                     <td className="px-6 py-4 text-right">
                                         <Link
-                                            href={`/tenant/rentals/${rental.id}`}
+                                            href={`/dashboard/tenant/rentals/${rental.id}`}
                                         >
                                             <Button
                                                 size="sm"

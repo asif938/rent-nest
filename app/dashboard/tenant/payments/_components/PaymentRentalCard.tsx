@@ -1,3 +1,4 @@
+import { DetailCard, DetailRow } from "@/app/dashboard/_components/DetailCard";
 import { Payment } from "@/types/payment";
 
 type Props = {
@@ -8,48 +9,26 @@ export default function PaymentRentalCard({
   rentalRequest,
 }: Props) {
   return (
-    <div className="rounded-xl border p-6">
-      <h2 className="mb-6 text-xl font-semibold">
-        Rental Information
-      </h2>
+    <DetailCard title="Rental Information">
 
-      <div className="space-y-4">
+      <DetailRow label="Rental Request ID">
+        <p className="break-all font-medium">
+          {rentalRequest.id}
+        </p>
+      </DetailRow>
 
-        <div>
-          <p className="text-sm text-muted-foreground">
-            Rental Request ID
-          </p>
+      <DetailRow label="Start Date">
+        <p>
+          {new Date(rentalRequest.startDate).toLocaleDateString()}
+        </p>
+      </DetailRow>
 
-          <p className="mt-1 break-all font-medium">
-            {rentalRequest.id}
-          </p>
-        </div>
+      <DetailRow label="End Date">
+        <p>
+          {new Date(rentalRequest.endDate).toLocaleDateString()}
+        </p>
+      </DetailRow>
 
-        <div>
-          <p className="text-sm text-muted-foreground">
-            Start Date
-          </p>
-
-          <p className="mt-1">
-            {new Date(
-              rentalRequest.startDate
-            ).toLocaleDateString()}
-          </p>
-        </div>
-
-        <div>
-          <p className="text-sm text-muted-foreground">
-            End Date
-          </p>
-
-          <p className="mt-1">
-            {new Date(
-              rentalRequest.endDate
-            ).toLocaleDateString()}
-          </p>
-        </div>
-
-      </div>
-    </div>
+    </DetailCard>
   );
 }

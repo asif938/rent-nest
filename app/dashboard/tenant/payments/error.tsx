@@ -20,7 +20,7 @@ export default function PaymentsError({
 
   return (
     <div className="flex min-h-[400px] items-center justify-center">
-      <div className="w-full max-w-md rounded-xl border p-8 text-center">
+      <div className="w-full max-w-md rounded-2xl border border-border/70 bg-card p-8 text-center shadow-sm">
 
         <h2 className="text-2xl font-semibold">
           Unable to load payments
@@ -32,7 +32,7 @@ export default function PaymentsError({
         </p>
 
         <Button
-          className="mt-6"
+          className="mt-6 rounded-full"
           onClick={() => reset()}
         >
           Try Again

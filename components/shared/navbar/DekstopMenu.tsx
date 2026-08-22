@@ -19,16 +19,16 @@ export default function DesktopMenu({
   const pathname = usePathname();
 
   return (
-    <nav className="hidden items-center gap-8 md:flex">
+    <nav className="hidden items-center gap-1 md:flex">
       {items.map((item) => (
         <Link
           key={item.href}
           href={item.href}
           className={cn(
-            "text-sm font-medium transition-colors hover:text-primary",
+            "rounded-full px-4 py-2 text-sm font-medium transition-colors",
             pathname === item.href
-              ? "text-primary"
-              : "text-muted-foreground"
+              ? "bg-primary/10 text-primary"
+              : "text-muted-foreground hover:bg-muted hover:text-foreground"
           )}
         >
           {item.label}

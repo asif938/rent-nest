@@ -1,35 +1,42 @@
-"use client";
+import Link from "next/link";
+import { House } from "lucide-react";
 
-import { Menu } from "lucide-react";
+import ProfileDropdown from "@/components/shared/navbar/ProfileDropdown";
+import MobileSidebar from "./MobileSidebar";
+import { dashboardMenus } from "@/config/dashboardMenus";
 
-import { Button } from "@/components/ui/button";
+type Props = {
+  role: keyof typeof dashboardMenus;
+  user: {
+    name: string;
+    email: string;
+    role: string;
+  };
+};
 
-export default function DashboardHeader() {
+export default function DashboardHeader({
+  role,
+  user,
+}: Props) {
   return (
-    <header className="sticky top-0 z-40 flex h-16 items-center justify-between border-b bg-background px-6">
+    <header className="sticky top-0 z-40 flex h-16 shrink-0 items-center justify-between border-b border-border/70 bg-background/80 px-4 backdrop-blur-lg lg:px-6">
 
-      <div>
-        <h1 className="text-xl font-semibold">
-          Dashboard
-        </h1>
+      <Link
+        href="/"
+        className="flex items-center gap-2.5"
+      >
+        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+          <House size={16} />
+        </span>
 
-        <p className="text-sm text-muted-foreground">
-          Welcome back 👋
-        </p>
-      </div>
+        <span className="font-display text-lg font-semibold">
+          RentNest
+        </span>
+      </Link>
 
-      <div className="flex items-center gap-3">
-
-        {/* Mobile sidebar button */}
-
-        <Button
-          variant="ghost"
-          size="icon"
-          className="lg:hidden"
-        >
-          <Menu className="h-5 w-5" />
-        </Button>
-
+      <div className="flex items-center gap-2">
+        <MobileSidebar role={role} />
+        <ProfileDropdown user={user} />
       </div>
 
     </header>

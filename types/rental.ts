@@ -1,3 +1,5 @@
+import { Payment } from "./payment";
+
 export type RentalStatus =
   | "PENDING"
   | "APPROVED"
@@ -20,7 +22,21 @@ export interface Rental {
     location: string;
     price: number;
     images: string[];
+    amenities: string[];
+
+    category: {
+      id: string;
+      name: string;
+    };
+
+    landlord?: {
+      id: string;
+      name: string;
+      email: string;
+    };
   };
+
+  payment: Payment | null;
 }
 
 export interface RentalResponse {

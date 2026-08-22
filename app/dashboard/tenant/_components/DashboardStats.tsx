@@ -1,5 +1,5 @@
 import {
-  CheckCircle,
+  CheckCircle2,
   Clock,
   CreditCard,
   FileText,
@@ -23,49 +23,43 @@ export default function DashboardStats({
       <DashboardCard
         title="Total Requests"
         value={dashboard.rentalRequests.total}
-        icon={
-          <FileText className="h-8 w-8 text-primary" />
-        }
+        tint="primary"
+        icon={<FileText size={20} />}
       />
 
       <DashboardCard
         title="Pending Requests"
         value={dashboard.rentalRequests.pending}
-        icon={
-          <Clock className="h-8 w-8 text-yellow-500" />
-        }
+        tint="accent"
+        icon={<Clock size={20} />}
       />
 
       <DashboardCard
         title="Approved Requests"
         value={dashboard.rentalRequests.approved}
-        icon={
-          <CheckCircle className="h-8 w-8 text-green-500" />
-        }
+        tint="forest"
+        icon={<CheckCircle2 size={20} />}
       />
 
       <DashboardCard
         title="Completed Rentals"
         value={dashboard.rentalRequests.completed}
-        icon={
-          <Wallet className="h-8 w-8 text-blue-500" />
-        }
+        tint="muted"
+        icon={<Wallet size={20} />}
       />
 
       <DashboardCard
         title="Completed Payments"
         value={dashboard.payments.completedPayments}
-        icon={
-          <CreditCard className="h-8 w-8 text-purple-500" />
-        }
+        tint="primary"
+        icon={<CreditCard size={20} />}
       />
 
       <DashboardCard
         title="Total Reviews"
         value={dashboard.reviews.total}
-        icon={
-          <MessageSquare className="h-8 w-8 text-orange-500" />
-        }
+        tint="accent"
+        icon={<MessageSquare size={20} />}
       />
 
     </section>

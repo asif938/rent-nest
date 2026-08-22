@@ -2,7 +2,9 @@
 
 import { cookies } from "next/headers";
 
-export async function getSingleRentals(id: string) {
+import { Rental } from "@/types/rental";
+
+export async function getSingleRentals(id: string): Promise<Rental> {
   const cookieStore = await cookies();
 
   const token = cookieStore.get("accessToken")?.value;

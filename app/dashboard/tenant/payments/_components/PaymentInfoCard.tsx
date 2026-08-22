@@ -1,4 +1,5 @@
 import { Badge } from "@/components/ui/badge";
+import { DetailCard, DetailRow } from "@/app/dashboard/_components/DetailCard";
 
 import { Payment } from "@/types/payment";
 
@@ -17,58 +18,35 @@ export default function PaymentInfoCard({
         : "secondary";
 
   return (
-    <div className="rounded-xl border p-6">
-      <h2 className="mb-6 text-xl font-semibold">
-        Payment Information
-      </h2>
+    <DetailCard title="Payment Information">
 
-      <div className="space-y-5">
+      <DetailRow label="Payment ID">
+        <p className="break-all font-medium">
+          {payment.id}
+        </p>
+      </DetailRow>
 
-        <div>
-          <p className="text-sm text-muted-foreground">
-            Payment ID
-          </p>
+      <DetailRow label="Amount">
+        <p className="font-display text-2xl font-medium text-primary">
+          ৳{payment.amount.toLocaleString()}
+        </p>
+      </DetailRow>
 
-          <p className="mt-1 break-all font-medium">
-            {payment.id}
-          </p>
-        </div>
+      <DetailRow label="Status">
+        <Badge
+          variant={statusVariant}
+          className="rounded-full"
+        >
+          {payment.status}
+        </Badge>
+      </DetailRow>
 
-        <div>
-          <p className="text-sm text-muted-foreground">
-            Amount
-          </p>
+      <DetailRow label="Payment Date">
+        <p>
+          {new Date(payment.createdAt).toLocaleDateString()}
+        </p>
+      </DetailRow>
 
-          <p className="mt-1 text-2xl font-bold">
-            ৳{payment.amount.toLocaleString()}
-          </p>
-        </div>
-
-        <div>
-          <p className="text-sm text-muted-foreground">
-            Status
-          </p>
-
-          <div className="mt-1">
-            <Badge variant={statusVariant}>
-              {payment.status}
-            </Badge>
-          </div>
-        </div>
-
-        <div>
-          <p className="text-sm text-muted-foreground">
-            Payment Date
-          </p>
-
-          <p className="mt-1">
-            {new Date(
-              payment.createdAt
-            ).toLocaleDateString()}
-          </p>
-        </div>
-
-      </div>
-    </div>
+    </DetailCard>
   );
 }
