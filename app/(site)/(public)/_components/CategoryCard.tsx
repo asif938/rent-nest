@@ -28,7 +28,7 @@ export default function CategoryCard({ category }: Props) {
 
   return (
     <Link
-      href={`/properties?category=${category.id}`}
+      href={`/properties?category=${encodeURIComponent(category.name)}`}
       className="group"
     >
       <Card className="relative h-44 flex-col items-center justify-center gap-4 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:ring-primary/30">
