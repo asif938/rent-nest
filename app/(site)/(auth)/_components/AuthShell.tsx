@@ -1,11 +1,11 @@
-import Link from "next/link";
-import { House, ShieldCheck, Sparkles } from "lucide-react";
+import { Check, ShieldCheck, Sparkles } from "lucide-react";
 
 type Props = {
   title: string;
   subtitle: string;
   panelHeading: string;
   panelBody: string;
+  panelPoints: string[];
   children: React.ReactNode;
 };
 
@@ -14,12 +14,13 @@ export default function AuthShell({
   subtitle,
   panelHeading,
   panelBody,
+  panelPoints,
   children,
 }: Props) {
   return (
     <div className="grid min-h-[calc(100vh-4rem)] lg:grid-cols-2">
 
-      <div className="relative hidden flex-col justify-between overflow-hidden bg-foreground p-12 text-background lg:flex">
+      <div className="relative hidden flex-col justify-center overflow-hidden bg-foreground p-12 text-background lg:flex">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
@@ -28,22 +29,6 @@ export default function AuthShell({
           <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-forest/25 blur-3xl" />
           <div className="bg-noise absolute inset-0 opacity-60" />
         </div>
-
-        <Link
-          href="/"
-          className="relative flex items-center gap-2.5"
-        >
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-primary-foreground">
-            <House
-              size={18}
-              strokeWidth={2.25}
-            />
-          </span>
-
-          <span className="font-display text-xl font-semibold">
-            RentNest
-          </span>
-        </Link>
 
         <div className="relative max-w-md">
           <span className="inline-flex items-center gap-2 rounded-full border border-background/15 bg-background/10 px-3 py-1 text-xs font-medium">
@@ -58,11 +43,25 @@ export default function AuthShell({
           <p className="mt-4 text-background/70">
             {panelBody}
           </p>
-        </div>
 
-        <div className="relative flex items-center gap-2 text-sm text-background/60">
-          <ShieldCheck size={16} />
-          Secured with Stripe · Verified landlords
+          <ul className="mt-8 space-y-3">
+            {panelPoints.map((point) => (
+              <li
+                key={point}
+                className="flex items-center gap-3 text-sm text-background/85"
+              >
+                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/25 text-primary-foreground">
+                  <Check size={12} />
+                </span>
+                {point}
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-10 flex items-center gap-2 text-sm text-background/60">
+            <ShieldCheck size={16} />
+            Secured with Stripe · Verified landlords
+          </div>
         </div>
       </div>
 

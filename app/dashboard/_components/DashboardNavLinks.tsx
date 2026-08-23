@@ -19,14 +19,22 @@ export default function DashboardNavLinks({
 
   const items = dashboardMenus[role] ?? [];
 
+  // Multiple items can share a path prefix (e.g. the "Dashboard" overview
+  // link at /dashboard/tenant is a prefix of /dashboard/tenant/rentals), so
+  // only the longest matching href should be marked active, not every match.
+  const activeHref = items
+    .map((item) => item.href)
+    .filter(
+      (href) => pathname === href || pathname.startsWith(`${href}/`)
+    )
+    .sort((a, b) => b.length - a.length)[0];
+
   return (
     <nav className="space-y-1">
       {items.map((item) => {
         const Icon = item.icon;
 
-        const active =
-          pathname === item.href ||
-          pathname.startsWith(`${item.href}/`);
+        const active = item.href === activeHref;
 
         return (
           <Link

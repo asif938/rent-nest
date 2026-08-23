@@ -1,7 +1,6 @@
 "use server";
 
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 
 type ErrorDetail = {
     field: string;
@@ -13,6 +12,7 @@ type LoginState = {
     statusCode?: number;
     message: string;
     errorDetails?: ErrorDetail[];
+    redirectTo?: string;
 };
 
 export async function loginAction(
@@ -58,24 +58,29 @@ export async function loginAction(
         redirectTo.startsWith("/") &&
         !redirectTo.startsWith("//")
     ) {
-        redirect(redirectTo);
+        return {
+            success: true,
+            message: result.message,
+            redirectTo,
+        };
     }
 
     const role = result.data.user.role;
 
-    switch (role) {
-        case "TENANT":
-            redirect("/dashboard/tenant");
+    const target =
+        role === "TENANT"
+            ? "/dashboard/tenant"
+            : role === "LANDLORD"
+                ? "/dashboard/landlord"
+                : role === "ADMIN"
+                    ? "/dashboard/admin"
+                    : "/";
 
-        case "LANDLORD":
-            redirect("/dashboard/landlord");
-
-        case "ADMIN":
-            redirect("/dashboard/admin");
-
-        default:
-            redirect("/");
-    }
+    return {
+        success: true,
+        message: result.message,
+        redirectTo: target,
+    };
 }
 
 type RegisterState = {
@@ -83,6 +88,7 @@ type RegisterState = {
   statusCode?: number;
   message: string;
   errorDetails?: ErrorDetail[];
+  redirectTo?: string;
 };
 
 export async function registerAction(
@@ -111,7 +117,11 @@ export async function registerAction(
   const result = await res.json();
 
   if (result.success) {
-    redirect("/login");
+    return {
+      success: true,
+      message: result.message,
+      redirectTo: "/login",
+    };
   }
 
   return result;

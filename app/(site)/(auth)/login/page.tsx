@@ -15,6 +15,11 @@ export default function LoginPage() {
       subtitle="Login to continue to RentNest."
       panelHeading="Pick up right where you left off."
       panelBody="Track rental requests, manage listings, and handle payments — all from one dashboard."
+      panelPoints={[
+        "Real-time rental request tracking",
+        "Secure Stripe-powered payments",
+        "One dashboard for every role",
+      ]}
     >
       <Suspense fallback={null}>
         <LoginForm />

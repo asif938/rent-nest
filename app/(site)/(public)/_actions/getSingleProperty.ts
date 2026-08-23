@@ -1,4 +1,6 @@
-export async function getSingleProperty(id: string) {
+import { cache } from "react";
+
+export const getSingleProperty = cache(async (id: string) => {
   const res = await fetch(
     `${process.env.BACKEND_API_URL}/api/properties/${id}`,
     {
@@ -13,4 +15,4 @@ export async function getSingleProperty(id: string) {
   const result = await res.json();
 
   return result.data;
-}
+});
