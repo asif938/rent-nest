@@ -90,7 +90,7 @@ export default function PropertyFilters({
   };
 
   return (
-    <aside className="rounded-2xl border border-border/70 bg-card p-6 shadow-sm">
+    <aside className="sticky top-24 rounded-2xl border border-border/70 bg-card p-6 shadow-sm">
       <div className="mb-6 flex items-center gap-2">
         <SlidersHorizontal
           size={18}
